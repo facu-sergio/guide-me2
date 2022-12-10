@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  lang="en">
+<%- include('partials/head') %>
+<body  >
+    <div class="container">
+        <%- include('partials/navbar') %>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <h1>Mis publicaciones</h1>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Publicadas</h2>
+            <% if(publicadas.length<1){%>
+                <p class="h5">No tienes Publicaciones publicadas</p>
+            <% }%>
+            <% for(let i=0;i<publicadas.length;i++){%>
+            <!--comienza tarjeta-->
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3">
+                        <div class="card border border-3 border-dark  tarjetas card<%=publicadas[i].ID_CAR_UPE%>" style="max-width: 18rem;">
+                            <div class="card-header text-center">
+                                <img src="uploads/<%=foto%>" width="60" height="60" height="80" alt="">
+                                <p class="h4 text-light"><%= nombre%> <%= apellido%> </p>
+                            </div>
+                            <div class="card-body text-primary">
+                                <p class="h3 text-light"><%= publicadas[i].TITULO %></p>
+                                <div class="text-light " id="cuerpo" ><%= publicadas[i].CUERPO %>
+                                </div>
+                                <a href="/publicacion?id=<%= publicadas[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1">Ver publicación Completa</a>
+                            </div>
+                        </div>
+                        <a class="btn btn-success mt-2" href="/editarpublicacion?id=<%=publicadas[i].ID_PUBLICACION%>">Editar</a>
+                        <a class="btn btn-danger mt-2" href="/borrarpublicacion?id=<%=publicadas[i].ID_PUBLICACION%>">Borrar</a>
+                    </div>
+                    
+            <%}%>
+        </div>
+            <div class="row mt-2">
+                <h2>Borradores</h2>
+                <% if(borradores.length<1){%>
+                    <p class="h5">No tienes Borradores</p>
+                <% }%>
+                <% for(let i=0;i<borradores.length;i++){%>
+                <!--comienza tarjeta-->
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 ">
+                            <div class="card border border-3 border-dark mb-3 tarjetas card<%=borradores[i].ID_CAR_UPE%>" style="max-width: 18rem;">
+                                <div class="card-header text-center">
+                                    <img src="uploads/<%=foto%>" width="60" height="60" height="80" alt="">
+                                    <p class="h4 text-light"><%= nombre%> <%= apellido%> </p>
+                                </div>
+                                <div class="card-body text-primary">
+                                    <p class="h3 text-light"><%= borradores[i].TITULO %></p>
+                                    <div class="text-light " id="cuerpo" ><%= borradores[i].CUERPO %>
+                                    </div>
+                                    <a href="/publicacion?id=<%= borradores[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1 ">Ver publicación Completa</a>
+                                </div>
+                            </div>
+                            <a class="btn btn-success mb-1" href="/editarpublicacion?id=<%=borradores[i].ID_PUBLICACION%>">Editar</a>
+                            <a class="btn btn-danger mb-1" href="/borrarpublicacion?id=<%=borradores[i].ID_PUBLICACION%>">Borrar</a>
+                        </div>
+                <%}%>
+            </div>
+    </div><!--fin Container-->
+    <script src="js/index.js"></script>
+</body>
+</html>

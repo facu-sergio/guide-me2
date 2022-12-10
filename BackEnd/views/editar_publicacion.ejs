@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('partials/head')%>
+<body>
+    <div class="container mt-5">
+      <%-include('partials/navbar')%>
+        <div class="card  mb-5 bg-body rounded mt-2">
+          <div class="card-header">
+            Editar publicacion
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Titulo (profesion)</label>
+                  <input type="text" class="form-control <%- errors.titulo ? 'is-invalid' : '' %>" id="titulo" name="titulo" placeholder="Ej: programador web">
+                  <div class="invalid-feedback">
+                    <%- errors.titulo %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="empresa" class="form-label">Empresa</label>
+                  <input type="text" class="form-control <%- errors.empresa ? 'is-invalid' : '' %>" id="empresa" name="empresa">
+                  <div class="invalid-feedback">
+                    <%- errors.empresa %>
+                  </div>
+                </div>
+              </div><!--fin row titulo y empresa-->
+              <div class="row mt-2">
+                <!--<div class="col-md-6">
+                  <label for="inputPassword4" class="form-label">Nombre de la carrera que estudiaste</label>
+                  <input type="text" class="form-control" id="inputEmpresa">
+                </div>-->
+                
+              </div><!--fin row nombre carrera etc-->
+              <div class="row mt-2">
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label">Cuerpo de la publicacion</label>
+                  <textarea type="text" class="form-control" name="cuerpo" id="cuerpo"></textarea>
+                </div>
+              </div><!--fin text area-->
+              
+              
+              
+            </form>
+          </div><!--fin card-body-->
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Publicar</button>
+                <button type="submit" class="btn btn-danger">Borrador</button>
+              </div>
+            </div>
+          </div>
+        </div><!--fin card general-->
+      </div><!--fin container-->
+</body>
+</html>

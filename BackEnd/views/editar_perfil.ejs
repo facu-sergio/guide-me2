@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body>
+  <div class="container">
+    <%- include('partials/navbar') %>
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2>Editar Perfil</h2>
+        </div>
+        <!--Fin card-header-->
+        <form id="mi_formulario" method="post" action="/editarperfil" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="row mt-3">
+                    <p class="h3">Datos personales</p>
+                </div>
+                <!--Fin primer separador-->
+                <div class="row mt-3">
+                    <div class="col-md-4 col-xs-12">
+                        <label class="form-label" for="nombre_us">Ingrese nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Cristian" value="<%=persona[0].NOMBRE%>">
+                    </div>
+
+                    <div class="col-md-4 col-xs-12">
+                        <label class="form-label" for="apellido_us">Ingrese apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ej: Gonzales" value="<%=persona[0].APELLIDO%>">
+                    </div>
+
+                    <div class="col-md-4 col-xs-12">
+                        <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" value="<%=fecha%>" >
+                    </div>
+                </div><!--Fin row nombre, apellido, nac-->
+                <div class="row mt-3">
+                  <div class="col-md-4 col-xs-12">
+                      <label class="form-label" for="imagen">Foto para tu perfil</label>
+                      <input type="file" class="form-control" id="imagen" name="image">
+                  </div>
+              </div><!--Fin de row imagen-->
+           
+                <div class="row mt-3">
+                    <h4>Datos académicos</h4>
+                </div>
+                <!--Fin tercer separador
+                <% for(let i=0;i<estudios.length;i++){%>
+                    <div class="row mt-3" >
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="carrera[]">Nombre de carrera:</label>
+                            <input type="text" class="form-control" id="carrera" name="carrera[]" 
+                            placeholder="Ejemplo:Tecnicatura en sistemas" value="<%= estudios[i].NOMBRE_CARRERA %>">
+                            <div class="invalid-feedback text-warning">Ingrese una carrera</div>
+                        </div>
+                      
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="universidad[]">Universidad</label>
+                            <input  class="form-control" type="text" id="universidad" name="universidad[]" value="<%= estudios[i].UNIVERSIDAD %>" >
+                            <div class="invalid-feedback text-warning">Ingrese una universidad</div>
+                        </div>
+                    </div>
+                <%} %>  -->
+                
+                <div class="row mt-3" >
+                    <div class="col-md-4 col-xs-12" >
+                        <label class="form-label" for="carrera[]">Nombre de carrera:</label>
+                        <input type="text" class="form-control" id="carrera" name="carrera[]" value="<%=estudios[0].NOMBRE_CARRERA%>"
+                        placeholder="Ejemplo:Tecnicatura en sistemas">
+                        <div class="invalid-feedback text-warning">Ingrese una carrera</div>
+                    </div>
+                    <!--Fin campo nombre carrera-->
+                    <div class="col-md-4 col-xs-12">
+                        <label class="form-label" for="universidad[]">Universidad</label>
+                        <input  class="form-control" type="text" id="universidad" name="universidad[]" value=" <%=estudios[0].UNIVERSIDAD%>">
+                        <div class="invalid-feedback text-warning">Ingrese una universidad</div>
+                    </div>
+                </div> 
+                <div class="row mt-3">
+                    <h4>Datos Laborales</h4>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4 col-xs-12">
+                        <label for="oficio" class="form-label">Si trabajas o trabajaste en un puesto relacionado a tu formación academica ingresalo (campo opcional) </label>
+                        <input type="text" class="form-control" placeholder="Ej: programador web"  name="oficio" id="oficio" value="<%=persona[0].OFICIO%>" >
+                    </div>
+                </div>
+            </div>
+            <!--Fin card-body-->
+            <div class="card-footer">
+                <div class="col-sm-1 offset-sm-11 col-xs-1">
+                    <!--El offset corre hacia el lado contrario el elemento-->
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+                <!--Fin row boton-->
+            </div>
+            <!--Fin card-footer-->
+        </form>
+    </div>
+    <!--fin card general-->
+
+</div>
+<!--Supuesto fin container-->
+<script src="js/form_editperfil.js"></script>
+</body>
+
+</html>

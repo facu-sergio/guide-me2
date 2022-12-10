@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%-include('partials/head')%>
+</head>
+
+<body>
+    <div class="container">
+        <%-include('partials/navbar')%>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h2>Registro</h2>
+            </div>
+            <!--Fin card-header-->
+            <form id="mi_formulario" method="POST" action="registrarse" enctype="multipart/form-data">
+                <div class="card-body">
+
+                    <div class="row mt-3">
+                        <p class="h3">Datos personales</p>
+                    </div>
+                    <!--Fin primer separador-->
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="nombre_us">Ingrese nombre</label>
+                            <input type="text" value="<%= oldData.nombre %>" class="form-control" name="nombre" id="nombre" placeholder="Ej: Cristian">
+                            <div class="invalid-feedback text-warning">Ingrese un nombre</div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="apellido_us">Ingrese apellido</label>
+                            <input type="text" value="<%= oldData.apellido %>" class="form-control" name="apellido" id="apellido" placeholder="Ej: Gonzales">
+                            <div class="invalid-feedback text-warning">Ingrese un apellido</div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
+                            <input type="date" value="<%= oldData.fecha_nac %>" class="form-control" name="fecha_nac" id="fecha_nac">
+                            <div class="invalid-feedback text-warning">Fecha invalida maximo 31/12/2004 </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="imagen">Foto para tu perfil</label>
+                            <input type="file" class="form-control" id="imagen" name="image">
+                            <div class="invalid-feedback text-warning">Ingrese una imagen valida .jpg,.jpeg o .png</div>
+                        </div>
+                    </div><!--Fin de row imagen-->
+                    <div class="row mt-3">
+                        <p class="h3">Datos sesión</p>
+                    </div>
+                    <!--Fin segundo separador-->
+                    <div class="row mt-3">
+
+                        <div class="col-md-6 col-xs-12">
+                            <label class="form-label" for="email_usuario">Ingrese un email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Ej:pepe@xxx.com" value="<%= oldData.email %>" >
+                            <div class="invalid-feedback text-warning">Ingrese un email valido</div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <label class="form-label" for="password_usuario">Ingrese una contraseña</label>
+                            <input type="password" value="<%= oldData.password %>" class="form-control" id="password" name="password"
+                            >
+                            <div class="invalid-feedback text-warning">Contraseña invalida mínimo ocho caracteres, al menos una letra y un número</div>    
+                        </div>
+
+                    </div>
+                    <!--Fin row email y contraseña-->
+                    <div class="row mt-3">
+                        <h4>Datos académicos</h4>
+                    </div>
+                    <!--Fin tercer separador-->
+
+                    <div class="row mt-3" >
+                        <div class="col-md-4 col-xs-12" >
+                            <label class="form-label" for="carrera[]">Nombre de carrera:</label>
+                            <input type="text" class="form-control" id="carrera" name="carrera[]" value="<%=oldData.carrera%>"
+                            placeholder="Ejemplo:Tecnicatura en sistemas">
+                            <div class="invalid-feedback text-warning">Ingrese una carrera</div>
+                        </div>
+                        <!--Fin campo nombre carrera-->
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="universidad[]">Universidad</label>
+                            <input  class="form-control" type="text" id="universidad" name="universidad[]" value="<%=oldData.universidad%>">
+                            <div class="invalid-feedback text-warning">Ingrese una universidad</div>
+                        </div>
+                    </div>
+                    <div class="row" id="rowCarreras">
+                        <div class="col-md-4 col-xs-12" id="divCarrera">
+
+                        </div>
+                        <div class="col-md-4 col-xs-12" id="divUniversidad">
+
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4 col-xs-12">
+                            <button type="button" class="btn btn-labeled btn-dark" id="addCarrera">
+                                <span class="btn-label"><i class="fa fa-plus-circle" aria-hidden="true"></i></span> Agregar</button>
+                        </div>
+                    </div>
+                     <!--Fin de universidad-->
+                    <!--row general-->
+                    <div class="row mt-3">
+                        <h4>Datos Laborales</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-xs-12">
+                            <label for="oficio" class="form-label">Si trabajas o trabajaste en un puesto relacionado a tu formación academica ingresalo (campo opcional) </label>
+                            <input type="text" class="form-control" placeholder="Ej: programador web"  name="oficio" id="oficio" >
+                        </div>
+                    </div>
+                    <!--Row de RadioS-->
+                </div>
+                <!--Fin card-body-->
+                <div class="card-footer">
+                    <div class="col-sm-1 offset-sm-11 col-xs-1">
+                        <!--El offset corre hacia el lado contrario el elemento-->
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                    <!--Fin row boton-->
+                </div>
+                <!--Fin card-footer-->
+            </form>
+        </div>
+        <!--fin card general-->
+
+    </div>
+    <!--Supuesto fin container-->
+   <!--<menu-footer></menu-footer>--> 
+   <script src="js/form_registro.js"></script>
+   <%-include('partials/alert')%>
+
+</body>
+
+</html>
