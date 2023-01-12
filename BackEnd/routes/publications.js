@@ -20,6 +20,8 @@ router.post('/search',publicacion_controller.search);
 
 router.get('/publicaciones',publicacion_controller.getPublicacionByCarrera);
 
+router.get('/listPublicaciones',publicacion_controller.getListPubli);
+
 router.get('/borrarpublicacion',authMiddleware,idMiddleware, publicacion_controller.deletePublicacion);
 
 router.post('/comentario',publicacion_controller.guardarComentario)
