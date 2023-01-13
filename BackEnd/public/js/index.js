@@ -24,7 +24,7 @@ function inicio(){
     if(page>=hojas.length){
         document.querySelector('#next').classList.add('d-none')
     }
-    if(page<2){
+    if(page<2 || !page){
         document.querySelector('#previus').classList.add('d-none')
     }
     document.querySelector('#next').addEventListener('click',nextPage);
